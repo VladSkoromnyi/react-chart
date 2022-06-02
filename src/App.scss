@@ -1,4 +1,5 @@
 .App {
+
   &__button {
     outline: none;
     font-weight: bold;
@@ -13,8 +14,8 @@
 
   &__form {
     position: fixed;
-    left: 20%;
-    top: 30%;
+    left: 10%;
+    top: 15%;
     background-color: #fff;
     width: 300px;
     height: max-content;
@@ -46,6 +47,18 @@
     font-size: 12px;
     margin: 0;
     color: red;
+  }
+}
+
+@media (min-width: 1024px) {
+  .App {
+    width: 45%;
+    margin: 0 auto;
+
+    &__form {
+      top: 20%;
+      left: 40%;
+    }
   }
 }
 
