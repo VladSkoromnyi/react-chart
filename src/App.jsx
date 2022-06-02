@@ -6,7 +6,7 @@ import { Controls } from './components/Controls/Controls';
 import { Data } from './Data';
 import { AddPoint } from './components/AddPoint/AddPoint';
 import { Chart as ChartJS } from "chart.js/auto";
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 
 export const App = () => {
   const [isBar, setIsBar] = useState(true);
@@ -38,6 +38,7 @@ export const App = () => {
   return (
     <div className="App">
       <Routes>
+        <Route path="/" element={<Navigate replace to="/BarChart" />} />
         <Route path="/BarChart" element={<BarChart chartData={chartData} />} />
         <Route path="/LineChart" element={<LineChart chartData={chartData} />} />
       </Routes>
