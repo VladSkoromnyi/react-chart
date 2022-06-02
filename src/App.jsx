@@ -48,7 +48,7 @@ export const App = () => {
         className="App__button edit center Link"
         onClick={() => setIsBar(!isBar)}
       >
-        {isBar ? 'Bar' : 'Line'} Chart
+        {isBar ? 'Line' : 'Bar'} Chart
       </Link>
 
       {isShowAddForm && (
