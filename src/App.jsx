@@ -1,18 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
 import { BarChart } from './components/BarChart/BarChart';
 import { LineChart } from './components/LineChart/LineChart';
 import { Controls } from './components/Controls/Controls';
 import { Data } from './Data';
+import { AddPoint } from './components/AddPoint/AddPoint';
+import { Chart as ChartJS } from "chart.js/auto";
 
 export const App = () => {
-  const [chartData, setChartData] = useState({
-    labels: Data.map((item) => item.mounth),
-    id: Data.map((item) => item.id),
+  const [isBar, setIsBar] = useState(true);
+  const [data, setData] = useState([]);
+  const [isShowAddForm, setIsShowAddForm] = useState(false);
+
+  useEffect(() => setData(Data), []);
+
+  const chartData = {
+    labels: data.map((item) => item.mounth),
+    id: data.map((item) => item.id),
     datasets: [
       {
         label: "Statictic",
-        data: Data.map((item) => item.gain),
+        data: data.map((item) => item.gain),
         backgroundColor: [
           "rgba(75,192,192,1)",
           "#ecf0f1",
@@ -24,24 +32,46 @@ export const App = () => {
         borderWidth: 2,
       },
     ],
-  });
+  };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Controls 
+      {isBar ? (
+        <BarChart 
           chartData={chartData}
-          setChartData={setChartData}
+        />      
+      ) : (
+        <LineChart 
+          chartData={chartData}
+        />      
+      )}
+
+      <button
+        className="App__button edit center"
+        onClick={() => setIsBar(!isBar)}
+      >
+        {isBar ? 'Line' : 'Bar'} Chart
+      </button>
+
+      {isShowAddForm && (
+        <AddPoint 
+          dataLength={data.length}
+          setData={setData}
+          setIsShowAddForm={setIsShowAddForm}
         />
-      </header>
+      )}
 
-      <BarChart 
-        chartData={chartData}
+      <Controls
+        data={data}
+        setData={setData}
       />
 
-      <LineChart 
-        chartData={chartData}
-      />
+      <button
+        className="App__button edit center"
+        onClick={() => setIsShowAddForm(true)}
+      >
+        Add point
+      </button>
     </div>
   );
 }

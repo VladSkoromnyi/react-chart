@@ -1,0 +1,36 @@
+.Controls {
+	border-left: 2px solid rgb(41, 155, 255);
+	padding-left: 10px;
+	margin: 10px;
+
+	&__table {
+		// margin: 20px;
+	}
+
+	&__table {
+		width: 100%;
+	}
+
+	&__thead {
+		color: rgb(41, 155, 255);
+	}
+
+	&__thead-cell {
+		font-size: 18px;
+		padding: 0 10px 20px;
+		border-bottom: 1px solid #dadada;
+	}
+
+	&__thead-cell:not(:first-child) {
+		border-left: 1px solid #dadada;
+	}
+
+	&__cell {
+		padding: 10px;
+		border-bottom: 1px solid #dadada;
+	}
+
+	&__cell:not(:first-child) {
+		border-left: 1px solid #dadada;
+	}
+}

@@ -1,3 +1,91 @@
 .App {
-  text-align: center;
+  &__button {
+    outline: none;
+    font-weight: bold;
+    border: 1px solid #dadada;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #474747;
+  
+    transition: background-color, color, 300ms ease;
+  }
+
+  &__form {
+    position: fixed;
+    left: 20%;
+    top: 30%;
+    background-color: #fff;
+    width: 300px;
+    height: max-content;
+    padding: 50px;
+    border: 1px solid #dadada;
+    border-radius: 10px;
+
+    z-index: 5;
+  }
+
+  &__input {
+    display: block;
+    font-size: 17px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    margin: 5px 0;
+  
+    transition: box-shadow 300ms ease;
+  }
+
+  &__input:focus {
+    box-shadow: -4px 3px 22px 6px #afcfff;
+  }
+
+  &__form-error {
+    font-size: 12px;
+    margin: 0;
+    color: red;
+  }
+}
+
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
+.blur {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.3;
+  background: #000;
+
+  z-index: 2;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.delete:hover {
+	background-color: rgb(255, 77, 77);
+	color: #fff;
+}
+
+.delete:active {
+	background-color: rgb(255, 35, 35);
+}
+
+.edit:hover {
+	background-color: rgb(41, 155, 255);
+	color: #fff;
+}
+
+.edit:active {
+	background-color: rgb(5, 138, 255);
 }
