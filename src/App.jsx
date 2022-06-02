@@ -6,6 +6,7 @@ import { Controls } from './components/Controls/Controls';
 import { Data } from './Data';
 import { AddPoint } from './components/AddPoint/AddPoint';
 import { Chart as ChartJS } from "chart.js/auto";
+import { Link, Route, Routes } from 'react-router-dom';
 
 export const App = () => {
   const [isBar, setIsBar] = useState(true);
@@ -36,22 +37,18 @@ export const App = () => {
 
   return (
     <div className="App">
-      {isBar ? (
-        <BarChart 
-          chartData={chartData}
-        />      
-      ) : (
-        <LineChart 
-          chartData={chartData}
-        />      
-      )}
+      <Routes>
+        <Route path="/BarChart" element={<BarChart chartData={chartData} />} />
+        <Route path="/LineChart" element={<LineChart chartData={chartData} />} />
+      </Routes>
 
-      <button
-        className="App__button edit center"
+      <Link
+        to={`${isBar ? '/BarChart' : '/LineChart'}`}
+        className="App__button edit center Link"
         onClick={() => setIsBar(!isBar)}
       >
-        {isBar ? 'Line' : 'Bar'} Chart
-      </button>
+        {isBar ? 'Bar' : 'Line'} Chart
+      </Link>
 
       {isShowAddForm && (
         <AddPoint 
